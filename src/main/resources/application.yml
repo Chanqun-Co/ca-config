@@ -1,0 +1,27 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: ca-config
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+  profiles:
+    active:
+      - git
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Chanqun-Co/ca-config.git
+          searchPaths: src/main/resources/config
+          default-label: master
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh, refresh, metrics
